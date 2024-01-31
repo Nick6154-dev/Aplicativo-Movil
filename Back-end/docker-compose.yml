@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+    
+    person-service:
+        image: person-service
+        container_name: person-service
+        restart: always
+        environment:
+            - SERVER_PORT=8001
+              
+    chat-service:
+        image: chat-service
+        container_name: chat-service
+        restart: always
+        environment:
+            - OPENAI_API_KEY=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
+              
+    file-service:
+        image: file-service
+        container_name: file-service
+        restart: always
+        environment:
+            - SERVER_PORT=8002
+            - OPENAI_API_KEY=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
+              
+    gateway-server:
+        image: gateway-server
+        container_name: gateway-server
+        restart: always
+        ports:
+            - "6154:6154"

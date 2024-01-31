@@ -1,0 +1,59 @@
+http:
+  routers:
+    person-router:
+      rule: "PathPrefix(`/person`)"
+      service: person-backend
+      middlewares:
+        - corsHeader
+        - personService-replacepathregex
+    file-router:
+      rule: "PathPrefix(`/file`)"
+      service: file-backend
+      middlewares:
+        - corsHeader
+        - fileService-replacepathregex
+    chat-router:
+      rule: "PathPrefix(`/chat`)"
+      service: chat-backend
+      middlewares:
+        - corsHeader
+        - chatService-replacepathregex 
+
+  services:
+    person-backend:
+      loadBalancer:
+        servers:
+          - url: "http://person-service:8001"
+    file-backend:
+      loadBalancer:
+        servers:
+          - url: "http://file-service:8002"
+    chat-backend:
+      loadBalancer:
+        servers:
+          - url: "http://chat-service:8003"
+            
+  middlewares:
+    corsHeader:
+      headers:
+        accessControlAllowMethods:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+        accessControlAllowHeaders: "*"
+        accessControlAllowOriginList:
+          - "*"
+    personService-replacepathregex:
+      replacePathRegex:
+        regex: "^/person/(.*)"
+        replacement: "/personService/$1"
+    fileService-replacepathregex:
+      replacePathRegex:
+        regex: "^/file/(.*)"
+        replacement: "/fileService/$1"
+    chatService-replacepathregex:
+      replacePathRegex:
+        regex: "^/chat/(.*)"
+        replacement: "/chatService/$1"
