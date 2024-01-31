@@ -8,7 +8,7 @@ El proyecto se divide en dos partes principales: el frontend y el backend.
 
 #### Person-Service
 
-[Person-Service](./Back-end/person-service) - Este servicio maneja las operaciones CRUD sobre una lista de personas. Utiliza una base de datos H2 para almacenar los datos de manera eficiente.
+[Person-Service](./Back-end/person-service) - Este servicio maneja las operaciones CRUD sobre una lista de personas. Utiliza una base de datos H2 para almacenar los datos de forma temporal.
 
 #### Chat-Service
 
