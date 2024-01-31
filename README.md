@@ -30,7 +30,7 @@ El proyecto se divide en dos partes principales: el frontend y el backend.
 
 [Ejecutable .bat](./Back-end/run.bat) - El archivo ejecutable .bat es responsable de construir los ejecutables, empaquetarlos en un contenedor y desplegarlos utilizando Docker Compose.
 
-### Carpeta Back-end:
+### Carpeta Front-end:
 
 #### Mobile-Application
 
